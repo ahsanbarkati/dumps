@@ -1,0 +1,15 @@
+diff --git a/sys/contrib/ipfilter/netinet/mlfk_ipl.c b/sys/contrib/ipfilter/netinet/mlfk_ipl.c
+index 094bafb593c..837ab52c2a9 100644
+--- a/sys/contrib/ipfilter/netinet/mlfk_ipl.c
++++ b/sys/contrib/ipfilter/netinet/mlfk_ipl.c
+@@ -225,6 +225,10 @@ vnet_ipf_init(void)
+ 		""
+ #endif
+ 		);
++	else {
++		(void)ipf_pfil_hook();
++		ipf_event_reg();
++	}	
+ }
+ VNET_SYSINIT(vnet_ipf_init, SI_SUB_PROTO_FIREWALL, SI_ORDER_THIRD,
+     vnet_ipf_init, NULL);
